@@ -21,8 +21,7 @@ int main(int argc, char *argv[])
 
   // Two arguments needed.
   if (argc != 3) {
-    cout
-    << ERROR
+    cout << ERROR
     << "two arguments required: "
     << "matrix size (short int) and random seed (int)\n";
 
@@ -34,8 +33,7 @@ int main(int argc, char *argv[])
 
   // First argument is short int.
   if (size <= 0 || size > USHRT_MAX) {
-    cout
-    << ERROR
+    cout << ERROR
     << "first argument must be between 0 and "
     << USHRT_MAX
     << "\n";
@@ -86,6 +84,7 @@ int main(int argc, char *argv[])
   for (int i = 0; i < size; i++) {
   for (int j = 0; j < size; j++) {
     sum = 0.0;
+    actual = 0.0;
 
     // Necessary for multiplication.
     for (int x = 0; x < size; x++)
@@ -112,6 +111,7 @@ int main(int argc, char *argv[])
 
   for (int i = 0; i < size; i++) {
     sum = 0.0;
+
     for (int j = 0; j < size; j++)
       sum_col[i] += abs(C[i][j]);
   }
@@ -122,8 +122,7 @@ int main(int argc, char *argv[])
       col_max = sum_col[i];
   }
 
-  cout
-  << "Norm of 'C': "
+  cout << "Norm of matrix 'C': "
   << col_max
   << "\n";
 
@@ -145,7 +144,10 @@ int main(int argc, char *argv[])
   // Stop measuring time.
   clock_t end = clock();
   double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-  cout << "Elapsed secs: " << elapsed_secs << "\n";
+
+  cout << "Elapsed secs: "
+  << elapsed_secs
+  << "\n";
 
   return 0;
 }
